@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MoviesCupApi.Models;
 using MoviesCupApi.Repositories.Interfaces;
+using MoviesCupApi.Utils;
 
 namespace MoviesCupApi.Controllers
 {
@@ -24,7 +26,10 @@ namespace MoviesCupApi.Controllers
         {
             try
             {
-                var movies = await _movieRepository.GetAllMoviesAsync();
+                List<Movie> movies = null;
+                movies = await _movieRepository.GetAllMoviesAsync();
+                if (movies.Count < 1)
+                    return BadRequest("List is empty");
                 return Ok(movies);
             }
             catch (Exception e)
@@ -37,7 +42,7 @@ namespace MoviesCupApi.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return "api is working";
+            return "Api v1 is working";
         }
     }
 }
