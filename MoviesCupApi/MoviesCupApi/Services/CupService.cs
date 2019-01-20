@@ -14,8 +14,6 @@ namespace MoviesCupApi.Services
         {
             movies = movies.FindAll(m => moviesIdentifiers.Any(x => x == m.Identifier));
 
-            ValidateNullableItem.ItemIsNull(movies);
-
             return new Cup(movies);
         }
     }
