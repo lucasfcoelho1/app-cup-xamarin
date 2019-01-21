@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MoviesCupApp"
-             x:Class="MoviesCupApp.MainPage">
+             x:Class="MoviesCupApp.MainPage"
+             BindingContext="{Binding MainViewModel, Source={StaticResource Locator}}">
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        
+        <Label HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               Text="{Binding MyProperty}" />
     </StackLayout>
 
 </ContentPage>

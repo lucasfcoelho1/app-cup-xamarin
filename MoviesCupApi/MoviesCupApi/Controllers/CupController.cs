@@ -38,6 +38,8 @@ namespace MoviesCupApi.Controllers
                     return BadRequest("Movies list is empty");
 
                 var cupResult = _cupService.StartCup(identifier, movies);
+                if (cupResult == null)
+                    return BadRequest("Problems in creating the cup");
                 return Ok(cupResult);
             }
             catch (Exception e)
