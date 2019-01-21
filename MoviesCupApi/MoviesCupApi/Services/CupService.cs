@@ -13,7 +13,7 @@ namespace MoviesCupApi.Services
         public Cup StartCup(List<string> moviesIdentifiers, List<Movie> movies)
         {
             movies = movies.FindAll(m => moviesIdentifiers.Any(x => x == m.Identifier));
-
+            movies = SortMovies.Sort(movies);
             return new Cup(movies);
         }
     }

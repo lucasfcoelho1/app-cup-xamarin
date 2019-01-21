@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MoviesCupApi.Repositories;
 using MoviesCupApi.Repositories.Interfaces;
+using MoviesCupApi.Services;
+using MoviesCupApi.Services.Interfaces;
 
 namespace MoviesCupApi
 {
@@ -29,6 +31,7 @@ namespace MoviesCupApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IMovieRepository, MovieRepository>();
+            services.AddSingleton<ICupService, CupService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

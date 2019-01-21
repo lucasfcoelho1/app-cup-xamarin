@@ -22,12 +22,13 @@ namespace MoviesCupApi.Controllers
             _cupService = cupService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> StartCup([FromBody]List<string> moviesIdentifiers)
+        [HttpPost("StartCup")]
+        public async Task<IActionResult> StartCup([FromBody]string[] moviesIdentifiers)
         {
-            if (moviesIdentifiers == null || moviesIdentifiers.Count < 1)
+            var identifier = new List<string>(moviesIdentifiers);
+            if (identifier == null || identifier.Count < 1)
                 return BadRequest("Identifiers is empty");
-            if (moviesIdentifiers.Count != 8)
+            if (identifier.Count != 8)
                 return BadRequest("Wrong movies list size");
             try
             {
@@ -36,7 +37,7 @@ namespace MoviesCupApi.Controllers
                 if (movies == null || movies.Count < 1)
                     return BadRequest("Movies list is empty");
 
-                var cupResult = _cupService.StartCup(moviesIdentifiers, movies);
+                var cupResult = _cupService.StartCup(identifier, movies);
                 return Ok(cupResult);
             }
             catch (Exception e)

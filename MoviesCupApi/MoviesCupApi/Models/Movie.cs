@@ -4,6 +4,7 @@ namespace MoviesCupApi.Models
 {
     public class Movie
     {
+        #region props
         [JsonProperty("id")]
         public string Identifier { get; set; }
         [JsonProperty("titulo")]
@@ -11,6 +12,7 @@ namespace MoviesCupApi.Models
         [JsonProperty("ano")]
         public int Year { get; set; }
         [JsonProperty("nota")]
-        public double Rating { get; set; }
+        public double Rating { get; set; } 
+        #endregion
     }
 }
