@@ -6,6 +6,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <moviesCup:ViewModelLocator x:Key="Locator"/>
+
+            <!--custom colors from material palette--><!--
+            <Color x:Key="textColor">#212121</Color>
+            <Color x:Key="primaryText">#212121</Color>
+            <Color x:Key="iconsColor">#212121</Color>
+            <Color x:Key="dividerColor">#BDBDBD</Color>
+            <Color x:Key="secondaryText">#757575</Color>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

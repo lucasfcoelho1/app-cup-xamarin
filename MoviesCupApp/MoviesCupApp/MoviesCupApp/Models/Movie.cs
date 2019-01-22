@@ -16,6 +16,12 @@ namespace MoviesCupApp.Models
         public int Year { get; set; }
         [JsonProperty("nota")]
         public double Rating { get; set; }
+        
+        /*
+         * if the api is updated just add the link 
+         * of the movie cover in the list
+         */
+        public string UrlPhoto { get; set; }
         #endregion
     }
 }

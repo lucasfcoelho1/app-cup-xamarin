@@ -2,15 +2,88 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MoviesCupApp"
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
              x:Class="MoviesCupApp.MainPage"
+             Title="Movies Cup App"
              BindingContext="{Binding MainViewModel, Source={StaticResource Locator}}">
 
     <StackLayout>
         <!-- Place new controls here -->
-        
-        <Label HorizontalOptions="CenterAndExpand" 
-               VerticalOptions="CenterAndExpand"
-               Text="{Binding MyProperty}" />
+
+        <StackLayout >
+            <!--<ListView x:Name="lvMovies"
+                      ItemsSource="{Binding Movies}"
+                      HasUnevenRows="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshListCommand}"
+                      IsPullToRefreshEnabled="False"
+                      ItemTapped="LvMovies_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Title}"
+                                   Detail="{Binding Year}"
+                                   ImageSource="filmstrip"
+                                   TextColor="Black"
+                                   DetailColor="Gray">
+                            <ImageCell.ContextActions>
+                                --><!--<MenuItem Text="Exibir" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}"/>--><!--
+                                <MenuItem Text="Deletar" Clicked="MenuItem_Deletar" CommandParameter="{Binding .}"/>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <Label Text="{Binding Items.Count}"
+                   IsVisible="{Binding CounterVisibility}"/>
+
+            <ListView x:Name="lvMovies"
+                      ItemsSource="{Binding Movies}"
+                      HasUnevenRows="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshListCommand}"
+                      IsPullToRefreshEnabled="True"
+                      lv:MultiSelect.Enable="true"
+                      ItemTapped="LvMovies_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <lv:SelectableCell x:Name="SelectableCell">
+                            <lv:SelectableCell.CheckView>
+                                <Image Source="checkbox_marked_circle"
+                                       HeightRequest="30"
+                                       WidthRequest="30"
+                                       />
+                            </lv:SelectableCell.CheckView>
+                            <lv:SelectableCell.DataView>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="filmstrip" 
+                                           WidthRequest="50"
+                                           />
+                                    <StackLayout Padding="20">
+                                        <Label Text="{Binding Title}"
+                                               TextColor="#212121"
+                                           FontSize="Large"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Ano: " 
+                                               FontAttributes="Bold" 
+                                               FontSize="Medium" 
+                                               WidthRequest="60"
+                                               MinimumWidthRequest="60"
+                                                   TextColor="#727272"/>
+                                            <Label Text="{Binding Year}" 
+                                                   FontSize="Medium"
+                                                   TextColor="#727272"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    
+                                </StackLayout>
+                            </lv:SelectableCell.DataView>
+                        </lv:SelectableCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
     </StackLayout>
 
 </ContentPage>
