@@ -23,43 +23,24 @@ namespace MoviesCupApp
         private void LvMovies_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var movie = ((SelectableItem<Movie>)e.Item);
-            var result = ViewModel.Items?.FirstOrDefault(i => i == movie);
+            var result = ViewModel.SelectedItems?.FirstOrDefault(i => i == movie);
 
             if (result == null)
-                ViewModel.Items.Add(movie);
+            {
+                ViewModel.SelectedItems.Add(movie);
+                ViewModel.HasSelectedItems = true;
+                ViewModel.SetCounter = ViewModel.SelectedItems.Count;
+            }
             else
-                ViewModel.Items.Remove(movie);
-
-
-            //foreach (var item in ViewModel.Movies)
-            //{
-            //    if (!item.Equals(movie))
-            //        ViewModel.Items.Add(item.Data);
-            //    else
-            //        ViewModel.Items.Remove(item.Data);
-            //}
+            {
+                ViewModel.SelectedItems.Remove(movie);
+                ViewModel.HasSelectedItems = ViewModel.SelectedItems.Count > 0;
+                ViewModel.SetCounter = ViewModel.SelectedItems.Count;
+            }
         }
-
-        //private void MenuItem_Clicked(object sender, EventArgs e)
-        //{
-        //    var menuItem = sender as MenuItem;
-        //    var movie = menuItem.CommandParameter as Movie;
-        //    DisplayAlert("Movie : ", movie.Title, "Ok");
-        //}
-
-        //private void MenuItem_Deletar(object sender, EventArgs e)
-        //{
-        //    var movie = (sender as MenuItem).CommandParameter as Movie;
-        //    ViewModel.Movies.Remove(movie);
-        //}
-
-        //private void LvMovies_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    var menuItem = sender as MenuItem;
-        //    var movie = menuItem.CommandParameter as Movie;
-        //    DisplayAlert("Movie : ", movie.Title, "Ok");
-        //}
-
-
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            var x = (sender as MenuItem).CommandParameter as Movie;
+        }
     }
 }

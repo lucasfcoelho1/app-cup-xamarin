@@ -9,7 +9,7 @@ namespace MoviesCupApp.Models
     {
         #region props
         [JsonProperty("id")]
-        public string Identifier { get; set; }
+        public long Identifier { get; set; }
         [JsonProperty("titulo")]
         public string Title { get; set; }
         [JsonProperty("ano")]

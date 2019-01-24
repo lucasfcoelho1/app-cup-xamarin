@@ -10,31 +10,15 @@
     <StackLayout>
         <!-- Place new controls here -->
 
-        <StackLayout >
-            <!--<ListView x:Name="lvMovies"
-                      ItemsSource="{Binding Movies}"
-                      HasUnevenRows="True"
-                      IsRefreshing="{Binding IsRefreshing}"
-                      RefreshCommand="{Binding RefreshListCommand}"
-                      IsPullToRefreshEnabled="False"
-                      ItemTapped="LvMovies_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell Text="{Binding Title}"
-                                   Detail="{Binding Year}"
-                                   ImageSource="filmstrip"
-                                   TextColor="Black"
-                                   DetailColor="Gray">
-                            <ImageCell.ContextActions>
-                                --><!--<MenuItem Text="Exibir" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}"/>--><!--
-                                <MenuItem Text="Deletar" Clicked="MenuItem_Deletar" CommandParameter="{Binding .}"/>
-                            </ImageCell.ContextActions>
-                        </ImageCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-            <Label Text="{Binding Items.Count}"
-                   IsVisible="{Binding CounterVisibility}"/>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <!--<Grid>
+                <Grid.RowDefinitions 
+            </Grid>-->
+            <StackLayout >
+                <Label Text="Selecione os 8 filmes para a Copa"
+                       HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
 
             <ListView x:Name="lvMovies"
                       ItemsSource="{Binding Movies}"
@@ -47,6 +31,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <lv:SelectableCell x:Name="SelectableCell">
+                            <lv:SelectableCell.ContextActions>
+                                <MenuItem Text="Enviar" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}"/>
+                            </lv:SelectableCell.ContextActions>
                             <lv:SelectableCell.CheckView>
                                 <Image Source="checkbox_marked_circle"
                                        HeightRequest="30"
@@ -58,29 +45,48 @@
                                     <Image Source="filmstrip" 
                                            WidthRequest="50"
                                            />
-                                    <StackLayout Padding="20">
+                                    <StackLayout Padding="10">
                                         <Label Text="{Binding Title}"
                                                TextColor="#212121"
-                                           FontSize="Large"/>
+                                               FontSize="Large"/>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Ano: " 
+                                            <!--<Label Text="Ano: " 
                                                FontAttributes="Bold" 
                                                FontSize="Medium" 
                                                WidthRequest="60"
                                                MinimumWidthRequest="60"
-                                                   TextColor="#727272"/>
+                                                   TextColor="#727272"/>-->
                                             <Label Text="{Binding Year}" 
                                                    FontSize="Medium"
                                                    TextColor="#727272"/>
                                         </StackLayout>
                                     </StackLayout>
-                                    
+
                                 </StackLayout>
                             </lv:SelectableCell.DataView>
                         </lv:SelectableCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout IsVisible="{Binding HasSelectedItems}"
+                         HeightRequest="40"
+                         BackgroundColor="#a8a8a8"
+                         VerticalOptions="EndAndExpand"
+                                 Orientation="Horizontal">
+                <Label Text="{Binding Counter, Mode=TwoWay}"
+                       FontSize="Medium"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+                <Label Text="Começar"
+                       Margin="0,0,10,0"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalOptions="End"
+                       TextColor="White"/>
+            </StackLayout>
 
         </StackLayout>
 

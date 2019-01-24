@@ -29,6 +29,10 @@ namespace MoviesCupApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IMovieRepository, MovieRepository>();
             services.AddSingleton<ICupService, CupService>();
@@ -40,13 +44,11 @@ namespace MoviesCupApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseHsts();
             }
-            else
-            {
-                app.UseHsts();
-            }
+                //app.UseHsts();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
