@@ -14,15 +14,24 @@ namespace MoviesCupApi.Repositories
         private readonly string URL_API = "http://copadosfilmes.azurewebsites.net/api/filmes";
 
         //return all movies from copafilmes api
-        public async Task<List<Movie>> GetAllMoviesAsync()
+        /*
+         * this method return either a pure string json, or a deserialized list of movies,
+         * it depends of the bool parameter 'returnAsJson'
+         */ 
+        public async Task<(string json, List<Movie> moviesList)> GetAllMoviesAsync(bool returnAsJson)
         {
             using (var httpClient = new HttpClient())
             {
-                var movies = new List<Movie>();
                 var responseMessage = await httpClient.GetAsync(URL_API);
                 if (responseMessage.IsSuccessStatusCode)
-                    movies = JsonConvert.DeserializeObject<List<Movie>>(await responseMessage.Content.ReadAsStringAsync());
-                return movies;
+                {
+                    if (returnAsJson)
+                        return (await responseMessage.Content.ReadAsStringAsync(), null);
+                    else
+                        return (null, JsonConvert.DeserializeObject<List<Movie>>(await responseMessage.Content.ReadAsStringAsync()));
+                }
+                else
+                    return (null, null);
             }
         }
     }

@@ -8,6 +8,6 @@ namespace MoviesCupApi.Repositories.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<List<Movie>> GetAllMoviesAsync();
+        Task<(string json, List<Movie> moviesList)> GetAllMoviesAsync(bool returnAsJson);
     }
 }

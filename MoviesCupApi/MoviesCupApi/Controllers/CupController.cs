@@ -32,12 +32,11 @@ namespace MoviesCupApi.Controllers
                 return BadRequest("Wrong movies list size");
             try
             {
-                List<Movie> movies = null;
-                movies = await _movieRepository.GetAllMoviesAsync();
-                if (movies == null || movies.Count < 1)
+                var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: false);
+                if (result.moviesList.Count < 1)
                     return BadRequest("Movies list is empty");
 
-                var cupResult = _cupService.StartCup(identifier, movies);
+                var cupResult = _cupService.StartCup(identifier, result.moviesList);
                 if (cupResult == null)
                     return BadRequest("Problems in creating the cup");
                 return Ok(cupResult);

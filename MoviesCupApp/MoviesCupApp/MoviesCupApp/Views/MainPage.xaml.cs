@@ -38,9 +38,5 @@ namespace MoviesCupApp
                 ViewModel.SetCounter = ViewModel.SelectedItems.Count;
             }
         }
-        private void MenuItem_Clicked(object sender, EventArgs e)
-        {
-            var x = (sender as MenuItem).CommandParameter as Movie;
-        }
     }
 }

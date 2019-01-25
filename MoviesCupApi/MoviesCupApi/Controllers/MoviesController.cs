@@ -20,17 +20,15 @@ namespace MoviesCupApi.Controllers
             _movieRepository = movieRepository;
         }
 
-        //return all movies
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllMoviesAsync()
         {
             try
             {
-                List<Movie> movies = null;
-                movies = await _movieRepository.GetAllMoviesAsync();
-                if (movies.Count < 1)
+                var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: true);
+                if (result.json == null)
                     return BadRequest("List is empty");
-                return Ok(movies);
+                return Ok(result.json);
             }
             catch (Exception e)
             {

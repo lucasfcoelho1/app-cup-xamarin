@@ -1,5 +1,7 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using MoviesCupApp.Repositories;
+using MoviesCupApp.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +20,7 @@ namespace MoviesCupApp.ViewModels
         public ViewModelLocator()
         {
             _unityContainer = new UnityContainer();
+            _unityContainer.RegisterType<IMovieRepository, MovieRepository>();
             _unityContainer.RegisterType<MainViewModel>(new ContainerControlledLifetimeManager());
 
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(_unityContainer));

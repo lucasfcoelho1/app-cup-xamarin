@@ -3,37 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MoviesCupApp"
              xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="MoviesCupApp.MainPage"
              Title="Movies Cup App"
              BindingContext="{Binding MainViewModel, Source={StaticResource Locator}}">
 
-    <StackLayout>
-        <!-- Place new controls here -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Recarregar Lista" Order="Secondary" Command="{Binding SyncListCommand}"/>
+    </ContentPage.ToolbarItems>
 
-        <StackLayout VerticalOptions="StartAndExpand">
-            <!--<Grid>
-                <Grid.RowDefinitions 
-            </Grid>-->
-            <StackLayout >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+            
+            <StackLayout Grid.Row="0">
                 <Label Text="Selecione os 8 filmes para a Copa"
-                       HorizontalOptions="CenterAndExpand"/>
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"
+                       IsVisible="{Binding IsTopTextVisible}"/>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                Orientation="Vertical"
+               HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                >
+                <Label Text="Ola"
+                VerticalOptions="Center"
+               IsVisible="{Binding IsCenterTextVisible}"/>
             </StackLayout>
 
-
-            <ListView x:Name="lvMovies"
-                      ItemsSource="{Binding Movies}"
+            <ListView Grid.Row="1"
+                x:Name="lvMovies"
+                      ItemsSource="{Binding MoviesList}"
                       HasUnevenRows="True"
-                      IsRefreshing="{Binding IsRefreshing}"
+                      IsRefreshing="{Binding IsBusy}"
                       RefreshCommand="{Binding RefreshListCommand}"
-                      IsPullToRefreshEnabled="True"
-                      lv:MultiSelect.Enable="true"
+                      IsPullToRefreshEnabled="False"
+                      IsVisible="{Binding IsVisible}"
+                      lv:MultiSelect.Enable="True"
                       ItemTapped="LvMovies_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <lv:SelectableCell x:Name="SelectableCell">
-                            <lv:SelectableCell.ContextActions>
-                                <MenuItem Text="Enviar" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}"/>
-                            </lv:SelectableCell.ContextActions>
                             <lv:SelectableCell.CheckView>
                                 <Image Source="checkbox_marked_circle"
                                        HeightRequest="30"
@@ -44,18 +60,13 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Image Source="filmstrip" 
                                            WidthRequest="50"
+                                           HeightRequest="50"
                                            />
                                     <StackLayout Padding="10">
                                         <Label Text="{Binding Title}"
                                                TextColor="#212121"
                                                FontSize="Large"/>
                                         <StackLayout Orientation="Horizontal">
-                                            <!--<Label Text="Ano: " 
-                                               FontAttributes="Bold" 
-                                               FontSize="Medium" 
-                                               WidthRequest="60"
-                                               MinimumWidthRequest="60"
-                                                   TextColor="#727272"/>-->
                                             <Label Text="{Binding Year}" 
                                                    FontSize="Medium"
                                                    TextColor="#727272"/>
@@ -68,7 +79,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout IsVisible="{Binding HasSelectedItems}"
+
+            <StackLayout 
+                Grid.Row="1"
+                IsVisible="{Binding HasSelectedItems}"
                          HeightRequest="40"
                          BackgroundColor="#a8a8a8"
                          VerticalOptions="EndAndExpand"
@@ -85,11 +99,12 @@
                        FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalOptions="End"
-                       TextColor="White"/>
+                       TextColor="White">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding StartCupCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
-
-        </StackLayout>
-
-    </StackLayout>
+            </Grid>
 
 </ContentPage>
