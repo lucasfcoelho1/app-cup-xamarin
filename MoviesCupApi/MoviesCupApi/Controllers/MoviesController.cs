@@ -27,12 +27,12 @@ namespace MoviesCupApi.Controllers
             {
                 var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: true);
                 if (result.json == null)
-                    return BadRequest("List is empty");
+                    return StatusCode(500);
                 return Ok(result.json);
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return StatusCode(500, e.Message);
             }
         }
 

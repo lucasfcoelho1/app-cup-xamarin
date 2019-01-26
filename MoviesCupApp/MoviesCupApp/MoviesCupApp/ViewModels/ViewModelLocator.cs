@@ -17,11 +17,17 @@ namespace MoviesCupApp.ViewModels
             get { return _unityContainer.Resolve<MainViewModel>(); }
         }
 
+        public CupResultViewModel CupResultViewModel
+        {
+            get { return _unityContainer.Resolve<CupResultViewModel>();}
+        }
+
         public ViewModelLocator()
         {
             _unityContainer = new UnityContainer();
             _unityContainer.RegisterType<IMovieRepository, MovieRepository>();
             _unityContainer.RegisterType<MainViewModel>(new ContainerControlledLifetimeManager());
+            _unityContainer.RegisterType<CupResultViewModel>(new ContainerControlledLifetimeManager());
 
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(_unityContainer));
         }

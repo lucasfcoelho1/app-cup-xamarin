@@ -11,11 +11,12 @@ namespace MoviesCupApi.Services
 {
     public class CupService : ICupService
     {
-        public Cup StartCup(List<string> moviesIdentifiers, List<Movie> movies)
+        public string StartCup(List<string> moviesIdentifiers, List<Movie> movies)
         {
             movies = movies.FindAll(m => moviesIdentifiers.Any(x => x == m.Identifier));
             movies = SortMovies.Sort(movies);
-            return new Cup(movies);
+            var cup = new Cup(movies);
+            return JsonConvert.SerializeObject(cup);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace MoviesCupApi.Services.Interfaces
 {
     public interface ICupService
     {
-        Cup StartCup(List<string> moviesIdentifiers, List<Movie> movies);
+        string StartCup(List<string> moviesIdentifiers, List<Movie> movies);
     }
 }

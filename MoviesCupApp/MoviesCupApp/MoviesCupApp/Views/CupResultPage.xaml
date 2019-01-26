@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoviesCupApp.Views.CupResultPage"
+             BackgroundColor="WhiteSmoke"
+             Title="Resultado"
+             BindingContext="{Binding CupResultViewModel, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Start">
+            <Frame IsClippedToBounds="True" 
+                   Margin="10,20,10,10"
+                   HasShadow="True"
+                   OutlineColor="White"
+                   HeightRequest="120">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="trophy_first"
+                               WidthRequest="60"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               />
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="Center">
+
+                        <Label Text="Campeão" HorizontalOptions="Center"
+                           FontSize="Small"/>
+                        <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="CenterAndExpand">
+                            <Label Text="{Binding CupResult.FirstPlace.Title}"
+                               HeightRequest="60"
+                           FontSize="Large"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+                
+            </Frame>
+            <Frame IsClippedToBounds="True" 
+                   Margin="10,0,10,0"
+                   HasShadow="True"
+                   OutlineColor="White"
+                   HeightRequest="60">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="trophy_runnersup"
+                               WidthRequest="50"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               />
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="Center">
+
+                        <Label Text="Vice" HorizontalOptions="Center"
+                           FontSize="Small"/>
+                        <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="Center">
+                            <Label Text="{Binding CupResult.SecondPlace.Title}"
+                                   HorizontalOptions="Center"
+                               HeightRequest="60"
+                           FontSize="Large"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            
+            <Frame IsClippedToBounds="True" 
+                   HasShadow="True"
+                   OutlineColor="White"
+                Margin="10,30,10,10"
+                HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="arrow_left"/>
+                    <Label Text="Tentar novamente com filmes diferentes"
+                   VerticalOptions="CenterAndExpand"
+                   />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

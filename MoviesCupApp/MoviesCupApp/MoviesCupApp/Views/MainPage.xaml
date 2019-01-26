@@ -12,99 +12,109 @@
         <ToolbarItem Text="Recarregar Lista" Order="Secondary" Command="{Binding SyncListCommand}"/>
     </ContentPage.ToolbarItems>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-                
-            </Grid.RowDefinitions>
-            
-            <StackLayout Grid.Row="0">
-                <Label Text="Selecione os 8 filmes para a Copa"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <Label Text="Selecione os 8 filmes para a Copa"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"
                        IsVisible="{Binding IsTopTextVisible}"/>
-            </StackLayout>
-            <StackLayout
+        </StackLayout>
+        <StackLayout
                 Grid.Row="1"
-                Orientation="Vertical"
+                Orientation="Horizontal"
+            Margin="0,-80,0,0"
+            IsEnabled="True"
                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center"
-                >
-                <Label Text="Ola"
-                VerticalOptions="Center"
-               IsVisible="{Binding IsCenterTextVisible}"/>
-            </StackLayout>
+                VerticalOptions="CenterAndExpand">
+            <Label Text="Nenhum filme para listar. Atualize a lista ou clique em Carregar Filmes no menu superior."
+                   VerticalOptions="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsCenterTextVisible}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SyncListCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
 
-            <ListView Grid.Row="1"
+        <ListView Grid.Row="1"
                 x:Name="lvMovies"
                       ItemsSource="{Binding MoviesList}"
-                      HasUnevenRows="True"
                       IsRefreshing="{Binding IsBusy}"
-                      RefreshCommand="{Binding RefreshListCommand}"
-                      IsPullToRefreshEnabled="False"
+                      RefreshCommand="{Binding SyncListCommand}"
                       IsVisible="{Binding IsVisible}"
+                      IsPullToRefreshEnabled="True"
+                      HasUnevenRows="True"
                       lv:MultiSelect.Enable="True"
                       ItemTapped="LvMovies_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <lv:SelectableCell x:Name="SelectableCell">
-                            <lv:SelectableCell.CheckView>
-                                <Image Source="checkbox_marked_circle"
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <lv:SelectableCell x:Name="SelectableCell"
+                                           Height="70">
+                        <lv:SelectableCell.CheckView>
+                            <Image Source="checkbox_marked_circle"
                                        HeightRequest="30"
                                        WidthRequest="30"
                                        />
-                            </lv:SelectableCell.CheckView>
-                            <lv:SelectableCell.DataView>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="filmstrip" 
+                        </lv:SelectableCell.CheckView>
+                        <lv:SelectableCell.DataView>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="filmstrip" 
                                            WidthRequest="50"
-                                           HeightRequest="50"
+                                           HeightRequest="40"
                                            />
-                                    <StackLayout Padding="10">
-                                        <Label Text="{Binding Title}"
+                                <StackLayout Padding="0">
+                                    <Label Text="{Binding Title}"
                                                TextColor="#212121"
-                                               FontSize="Large"/>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Year}" 
+                                               FontSize="Medium"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Year}" 
                                                    FontSize="Medium"
                                                    TextColor="#727272"/>
-                                        </StackLayout>
                                     </StackLayout>
-
                                 </StackLayout>
-                            </lv:SelectableCell.DataView>
-                        </lv:SelectableCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
-            <StackLayout 
+                            </StackLayout>
+                        </lv:SelectableCell.DataView>
+                    </lv:SelectableCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout 
                 Grid.Row="1"
                 IsVisible="{Binding HasSelectedItems}"
                          HeightRequest="40"
                          BackgroundColor="#a8a8a8"
                          VerticalOptions="EndAndExpand"
                                  Orientation="Horizontal">
-                <Label Text="{Binding Counter, Mode=TwoWay}"
+            <Label Text="{Binding Counter, Mode=TwoWay}"
                        FontSize="Medium"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        FontAttributes="Bold"
                        TextColor="White"/>
-                <Label Text="Começar"
+            <Label Text="Começar"
                        Margin="0,0,10,0"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalOptions="End"
-                       TextColor="White">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding StartCupCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-            </Grid>
+                       TextColor="White"
+                       IsEnabled="{Binding IsControlsEnabled}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding StartCupCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

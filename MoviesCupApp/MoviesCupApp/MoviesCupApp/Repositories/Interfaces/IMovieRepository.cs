@@ -8,6 +8,7 @@ namespace MoviesCupApp.Repositories.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<List<Movie>> GetMovies();
+        Task<T> GetMoviesAsync<T>() where T : class;
+        Task<T> PostAsync<T>(string[] moviesId) where T : class;
     }
 }

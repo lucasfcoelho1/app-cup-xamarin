@@ -12,7 +12,10 @@ namespace MoviesCupApp
 {
     public partial class MainPage : ContentPage
     {
-        public MainViewModel ViewModel { get; set; }
+        #region props
+        public MainViewModel ViewModel { get; set; } 
+        #endregion
+
         public MainPage()
         {
             InitializeComponent();
@@ -20,23 +23,23 @@ namespace MoviesCupApp
             ViewModel = BindingContext as MainViewModel;
         }
 
-        private void LvMovies_ItemTapped(object sender, ItemTappedEventArgs e)
+        #region methods
+        protected override void OnAppearing()
         {
-            var movie = ((SelectableItem<Movie>)e.Item);
-            var result = ViewModel.SelectedItems?.FirstOrDefault(i => i == movie);
-
-            if (result == null)
+            base.OnAppearing();
+            if (ViewModel.SelectedItems != null && ViewModel.SelectedItems?.Count > 1)
             {
-                ViewModel.SelectedItems.Add(movie);
-                ViewModel.HasSelectedItems = true;
-                ViewModel.SetCounter = ViewModel.SelectedItems.Count;
-            }
-            else
-            {
-                ViewModel.SelectedItems.Remove(movie);
-                ViewModel.HasSelectedItems = ViewModel.SelectedItems.Count > 0;
-                ViewModel.SetCounter = ViewModel.SelectedItems.Count;
+                //turning a MultiSelectObservableCollection<Movie> into a List<Movie>
+                var list = (from item in ViewModel.MoviesList select item.Data).ToList();
+                ViewModel.FillMoviesList(list);
             }
         }
+
+        private void LvMovies_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ViewModel.ToggleSelectedItem(e);
+        }
+        #endregion
+
     }
 }

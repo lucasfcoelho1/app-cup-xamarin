@@ -27,23 +27,23 @@ namespace MoviesCupApi.Controllers
         {
             var identifier = new List<string>(moviesIdentifiers);
             if (identifier == null || identifier.Count < 1)
-                return BadRequest("Identifiers is empty");
+                return StatusCode(500);
             if (identifier.Count != 8)
-                return BadRequest("Wrong movies list size");
+                return StatusCode(500);
             try
             {
                 var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: false);
                 if (result.moviesList.Count < 1)
-                    return BadRequest("Movies list is empty");
+                    return StatusCode(500);
 
                 var cupResult = _cupService.StartCup(identifier, result.moviesList);
-                if (cupResult == null)
-                    return BadRequest("Problems in creating the cup");
+                if (string.IsNullOrEmpty(cupResult))
+                    return StatusCode(500);
                 return Ok(cupResult);
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return StatusCode(500, e.Message);
             }
         }
     }

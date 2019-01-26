@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviesCupApp.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +13,7 @@ namespace MoviesCupApp
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new CupResultPage());
         }
 
         protected override void OnStart()
