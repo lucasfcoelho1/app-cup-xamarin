@@ -1,5 +1,7 @@
 ﻿using MoviesCupApi.Models;
 using MoviesCupApi.Repositories.Interfaces;
+using MoviesCupApi.Utils;
+using MoviesCupApi.Utils.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,12 +14,17 @@ namespace MoviesCupApi.Repositories
     public class MovieRepository : IMovieRepository
     {
         private readonly string URL_API = "http://copadosfilmes.azurewebsites.net/api/filmes";
+        private readonly IHttpHandler _httpHandler;
+        public MovieRepository(IHttpHandler httpHandler)
+        {
+            _httpHandler = httpHandler;
+        }
 
         //return all movies from copafilmes api
         /*
          * this method return either a pure string json, or a deserialized list of movies,
          * it depends of the bool parameter 'returnAsJson'
-         */ 
+         */
         public async Task<(string json, List<Movie> moviesList)> GetAllMoviesAsync(bool returnAsJson)
         {
             using (var httpClient = new HttpClient())

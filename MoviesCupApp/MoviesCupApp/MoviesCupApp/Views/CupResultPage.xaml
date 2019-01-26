@@ -70,9 +70,12 @@
                 HorizontalOptions="Center">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="arrow_left"/>
-                    <Label Text="Tentar novamente com filmes diferentes"
-                   VerticalOptions="CenterAndExpand"
-                   />
+                    <Label Text="Começar novamente com filmes diferentes"
+                   VerticalOptions="CenterAndExpand">
+                    </Label>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding BackToMoviesListCommand}"/>
+                        </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Frame>
         </StackLayout>

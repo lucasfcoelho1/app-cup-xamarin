@@ -141,26 +141,26 @@ namespace MoviesCupApp.ViewModels
         private void ToggleIsBusy(bool isBusy, bool isControlsEnabled)
         {
             IsBusy = isBusy;
-            IsControlsEnabled = IsControlsEnabled;
+            IsControlsEnabled = isControlsEnabled;
         }
 
         private async Task SyncListCommandExecuteCommand()
         {
-            IsBusy = true;
+            ToggleIsBusy(isBusy: true, isControlsEnabled: false);
             var movies = await _movieRepository.GetMoviesAsync<List<Movie>>();
             if (movies == null || movies?.Count < 1)
             {
-                IsBusy = false;
                 IsCenterTextVisible = MoviesList.Count < 1;
                 IsListVisible = !IsCenterTextVisible;
                 IsTopTextVisible = !IsCenterTextVisible;
+                ToggleIsBusy(isBusy: false, isControlsEnabled: true);
                 return;
             }
             FillMoviesList(movies);
             IsCenterTextVisible = MoviesList.Count < 1;
             IsListVisible = !IsCenterTextVisible;
             IsTopTextVisible = !IsCenterTextVisible;
-            IsBusy = false;
+            ToggleIsBusy(isBusy: false, isControlsEnabled: true);
             App.Current.MainPage.ForceLayout();
         }
 
