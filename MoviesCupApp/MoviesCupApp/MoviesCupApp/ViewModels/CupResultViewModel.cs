@@ -21,7 +21,7 @@ namespace MoviesCupApp.ViewModels
             BackToMoviesListCommand = new Command(BackToMoviesListExecuteCommand);
         }
 
-        private void BackToMoviesListExecuteCommand(object obj)
+        private void BackToMoviesListExecuteCommand()
         {
             App.Current.MainPage.Navigation.PopAsync();
         }

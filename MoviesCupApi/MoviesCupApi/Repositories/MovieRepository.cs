@@ -1,7 +1,6 @@
 ﻿using MoviesCupApi.Models;
 using MoviesCupApi.Repositories.Interfaces;
 using MoviesCupApi.Utils;
-using MoviesCupApi.Utils.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,11 +13,6 @@ namespace MoviesCupApi.Repositories
     public class MovieRepository : IMovieRepository
     {
         private readonly string URL_API = "http://copadosfilmes.azurewebsites.net/api/filmes";
-        private readonly IHttpHandler _httpHandler;
-        public MovieRepository(IHttpHandler httpHandler)
-        {
-            _httpHandler = httpHandler;
-        }
 
         //return all movies from copafilmes api
         /*
