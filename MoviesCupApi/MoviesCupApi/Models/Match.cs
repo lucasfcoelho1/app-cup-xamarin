@@ -24,12 +24,12 @@ namespace MoviesCupApi.Models
          */
 
         #region methods
-        internal (Movie winner, Movie loser) GetResult()
+        public (Movie winner, Movie loser) GetResult()
         {
             return Movie1.Rating != Movie2.Rating ? GetWinnerByRating() : GetWinnerByAscendingOrder();
         }
 
-        private (Movie winner, Movie loser) GetWinnerByRating()
+        public (Movie winner, Movie loser) GetWinnerByRating()
         {
             if (Movie1.Rating > Movie2.Rating)
                 return (Movie1, Movie2);
@@ -37,7 +37,7 @@ namespace MoviesCupApi.Models
                 return (Movie2, Movie1);
         }
 
-        private (Movie winner, Movie loser) GetWinnerByAscendingOrder()
+        public (Movie winner, Movie loser) GetWinnerByAscendingOrder()
         {
             if (string.Compare(Movie1.Title, Movie2.Title) < 0)
                 return (Movie1, Movie2);

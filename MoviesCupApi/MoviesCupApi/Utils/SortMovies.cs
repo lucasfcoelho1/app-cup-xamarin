@@ -8,6 +8,7 @@ namespace MoviesCupApi.Utils
 {
     public static class SortMovies
     {
-        public static List<Movie> Sort(List<Movie> moviesList) => moviesList.OrderBy(m => m.Title).ToList();
+        public static List<Movie> Sort(List<Movie> moviesList) => 
+            moviesList.OrderBy(m => m.Title).ToList();
     }
 }

@@ -27,18 +27,18 @@ namespace MoviesCupApi.Controllers
         {
             if (moviesIdentifiers == null || moviesIdentifiers.Length < 1)
                 return StatusCode(500, "Identifiers cannot be null");
-            var identifier = new List<string>(moviesIdentifiers);
-            if (identifier.Count != 8)
-                return StatusCode(500);
+            var identifiersList = new List<string>(moviesIdentifiers);
+            if (identifiersList.Count != 8)
+                return StatusCode(500, "Identifier list must have 8 elements");
             try
             {
                 var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: false);
-                if (result.moviesList.Count < 1)
-                    return StatusCode(500);
+                if (result.moviesList == null || result.moviesList?.Count < 1)
+                    return StatusCode(500, "Movies list is empty");
 
-                var cupResult = _cupService.StartCup(identifier, result.moviesList);
+                var cupResult = _cupService.StartCup(identifiersList, result.moviesList);
                 if (string.IsNullOrEmpty(cupResult))
-                    return StatusCode(500);
+                    return StatusCode(500, "Cup result is null");
                 return Ok(cupResult);
             }
             catch (Exception e)
