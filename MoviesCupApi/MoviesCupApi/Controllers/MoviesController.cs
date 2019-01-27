@@ -27,7 +27,7 @@ namespace MoviesCupApi.Controllers
             {
                 var result = await _movieRepository.GetAllMoviesAsync(returnAsJson: true);
                 if (result.json == null)
-                    return StatusCode(500);
+                    return StatusCode(500, "Movies list is null");
                 return Ok(result.json);
             }
             catch (Exception e)

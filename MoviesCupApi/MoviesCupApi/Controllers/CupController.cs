@@ -25,9 +25,9 @@ namespace MoviesCupApi.Controllers
         [HttpPost("StartCup")]
         public async Task<IActionResult> StartCup([FromBody]string[] moviesIdentifiers)
         {
+            if (moviesIdentifiers == null || moviesIdentifiers.Length < 1)
+                return StatusCode(500, "Identifiers cannot be null");
             var identifier = new List<string>(moviesIdentifiers);
-            if (identifier == null || identifier.Count < 1)
-                return StatusCode(500);
             if (identifier.Count != 8)
                 return StatusCode(500);
             try
