@@ -27,8 +27,14 @@ Nele deve ser enviado um *array* de string com 8 elementos, os identifiers de ca
 ```
 http://movies-cup.azurewebsites.net/api/movies/startcup
 ```
-
+### Teste da API
 * A API possui um projeto de [Teste](https://github.com/lucasfcoelho1/movies-cup/tree/master/MoviesCupApi/MoviesCupApi.Test) desenvolvido em [xUnit](https://github.com/xunit/xunit)
+
+### Swagger UI
+O Swagger está configurado para esta API e pode ser utilizado para testá-la neste [link](http://movies-cup.azurewebsites.net/swagger/index.html).
+
+
+
 
 ## APP
 
