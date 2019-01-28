@@ -151,7 +151,10 @@ namespace MoviesCupApp.ViewModels
             {
                 var result = await App.Current.MainPage.DisplayAlert(AppResources.Attention, AppResources.RefreshConfirmation, AppResources.OK, AppResources.Cancel);
                 if (!result)
+                {
+                    IsBusy = false;
                     return;
+                }
             }
 
             ToggleIsBusy(isBusy: true, isControlsEnabled: false);
