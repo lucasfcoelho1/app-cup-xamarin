@@ -1,0 +1,17 @@
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.csprojAssemblyReference.cache
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.csproj.CoreCompileInputs.cache
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.AssemblyInfoInputs.cache
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.AssemblyInfo.cs
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.Test.deps.json
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.Test.runtimeconfig.json
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.Test.runtimeconfig.dev.json
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.Test.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.Test.pdb
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\bin\Debug\netcoreapp2.1\MoviesCupApi.pdb
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.csproj.CopyComplete
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.dll
+C:\git\movies-cup\MoviesCupApi\MoviesCupApi.Test\obj\Debug\netcoreapp2.1\MoviesCupApi.Test.pdb
