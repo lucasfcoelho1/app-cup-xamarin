@@ -5,11 +5,10 @@
              xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="MoviesCupApp.MainPage"
-             Title="Movies Cup App"
              BindingContext="{Binding MainViewModel, Source={StaticResource Locator}}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Recarregar Lista" Order="Secondary" Command="{Binding SyncListCommand}"/>
+        <ToolbarItem x:Name="lblLoadMovies" Order="Secondary" Command="{Binding SyncListCommand}"/>
     </ContentPage.ToolbarItems>
 
     <Grid>
@@ -20,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackLayout Grid.Row="0">
-            <Label Text="Selecione os 8 filmes para a Copa"
+            <Label x:Name="lblChoose8Movies"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"
@@ -33,7 +32,8 @@
             IsEnabled="True"
                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand">
-            <Label Text="Nenhum filme para listar. Atualize a lista ou clique em Carregar Filmes no menu superior."
+            <Label x:Name="lblNomives"
+                   Margin="10,0,10,0"
                    VerticalOptions="Center"
                    FontSize="Medium"
                    HorizontalOptions="Center"
@@ -54,7 +54,8 @@
                       IsPullToRefreshEnabled="True"
                       HasUnevenRows="True"
                       lv:MultiSelect.Enable="True"
-                      ItemTapped="LvMovies_ItemTapped">
+                      ItemTapped="LvMovies_ItemTapped"
+                  Margin="0,0,0,40">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <lv:SelectableCell x:Name="SelectableCell"
@@ -76,9 +77,17 @@
                                                TextColor="#212121"
                                                FontSize="Medium"/>
                                     <StackLayout Orientation="Horizontal">
+                                        <Image Source="calendar"/>
                                         <Label Text="{Binding Year}" 
                                                    FontSize="Medium"
-                                                   TextColor="#727272"/>
+                                                   TextColor="#727272"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="{Binding Rating}"
+                                               Margin="20,0,0,0"
+                                               FontSize="Medium"
+                                               TextColor="#727272"
+                                               VerticalOptions="Center"/>
+                                        <Image Source="star"/>
                                     </StackLayout>
                                 </StackLayout>
 
@@ -102,7 +111,7 @@
                        VerticalOptions="CenterAndExpand"
                        FontAttributes="Bold"
                        TextColor="White"/>
-            <Label Text="Começar"
+            <Label x:Name="lblStart"
                        Margin="0,0,10,0"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Large"

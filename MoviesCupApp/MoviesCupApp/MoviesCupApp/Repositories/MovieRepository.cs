@@ -1,6 +1,7 @@
 ﻿using MoviesCupApp.Models;
 using MoviesCupApp.Repositories.Interfaces;
 using MoviesCupApp.Resources;
+using MoviesCupApp.Utils;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -14,9 +15,7 @@ namespace MoviesCupApp.Repositories
 {
     public class MovieRepository : IMovieRepository
     {
-        private const string API_URL = "https://movies-cup.azurewebsites.net/api";
-        //private const string API_URL = "http://192.168.0.106:56430/api";
-        //private const string API_URL = "http://192.168.0.106:63476/api";
+        private const string API_URL = "https://movies-cup.azurewebsites.net/api/";
 
         public async Task<T> GetMoviesAsync<T>() where T : class
         {
@@ -28,11 +27,7 @@ namespace MoviesCupApp.Repositories
             }
             try
             {
-                var httpClient = new HttpClient();
-                var response = await httpClient.GetAsync($"{API_URL}/movies/getall");
-                response.EnsureSuccessStatusCode();
-                var jsonResult = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<T>(jsonResult);
+                return await ApiSync.GetAsync<T>(API_URL, "movies/getall");
             }
             catch (Exception e)
             {
@@ -41,6 +36,8 @@ namespace MoviesCupApp.Repositories
             }
             return null;
         }
+
+        
 
         public async Task<T> PostAsync<T>(string[] moviesId) where T : class
         {
@@ -51,17 +48,7 @@ namespace MoviesCupApp.Repositories
             }
             try
             {
-                var json = JsonConvert.SerializeObject(moviesId);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                var httpClient = new HttpClient();
-                var response = await httpClient.PostAsync($"{API_URL}/cup/startcup", content);
-                if (response.StatusCode != System.Net.HttpStatusCode.OK && response.StatusCode != System.Net.HttpStatusCode.Accepted)
-                    return null;
-                var jsonResult = response.Content.ReadAsStringAsync().Result;
-                if (typeof(T) == typeof(string))
-                    return jsonResult as T;
-                var rootobject = JsonConvert.DeserializeObject<T>(jsonResult);
-                return rootobject;
+                return await ApiSync.Post<T>(moviesId, API_URL, "cup/startcup");
             }
             catch (Exception e)
             {
@@ -69,5 +56,7 @@ namespace MoviesCupApp.Repositories
                 return null;
             }
         }
+
+        
     }
 }

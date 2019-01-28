@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MoviesCupApi.Models;
 using MoviesCupApi.Repositories.Interfaces;
-using MoviesCupApi.Utils;
 
 namespace MoviesCupApi.Controllers
 {
@@ -36,11 +32,6 @@ namespace MoviesCupApi.Controllers
             }
         }
 
-        //api hello world
-        [HttpGet]
-        public ActionResult<string> Get()
-        {
-            return "Api v1 is working";
-        }
+        
     }
 }

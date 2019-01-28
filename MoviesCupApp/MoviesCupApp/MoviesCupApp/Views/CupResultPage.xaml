@@ -22,7 +22,7 @@
                     <StackLayout HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="Center">
 
-                        <Label Text="Campeão" HorizontalOptions="Center"
+                        <Label x:Name="lblWinner" HorizontalOptions="Center"
                            FontSize="Small"/>
                         <StackLayout Orientation="Horizontal"
                                  VerticalOptions="CenterAndExpand">
@@ -49,7 +49,7 @@
                     <StackLayout HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="Center">
 
-                        <Label Text="Vice" HorizontalOptions="Center"
+                        <Label x:Name="lblRunnerUp" HorizontalOptions="Center"
                            FontSize="Small"/>
                         <StackLayout Orientation="Horizontal"
                                  VerticalOptions="Center">
@@ -70,7 +70,7 @@
                 HorizontalOptions="Center">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="arrow_left"/>
-                    <Label Text="Começar novamente com filmes diferentes"
+                    <Label x:Name="lblStartAgain"
                    VerticalOptions="CenterAndExpand">
                     </Label>
                         <StackLayout.GestureRecognizers>

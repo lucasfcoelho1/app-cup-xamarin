@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MoviesCupApi.Models;
 using MoviesCupApi.Repositories.Interfaces;
 using MoviesCupApi.Services.Interfaces;
 
@@ -23,7 +21,7 @@ namespace MoviesCupApi.Controllers
         }
 
         [HttpPost("StartCup")]
-        public async Task<IActionResult> StartCup([FromBody]string[] moviesIdentifiers)
+        public async Task<IActionResult> StartCup([Required][FromBody]string[] moviesIdentifiers)
         {
             if (moviesIdentifiers == null || moviesIdentifiers.Length < 1)
                 return StatusCode(500, "Identifiers cannot be null");

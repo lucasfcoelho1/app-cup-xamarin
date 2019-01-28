@@ -135,6 +135,7 @@ namespace MoviesCupApp.ViewModels
                 return;
             }
             ToggleIsBusy(isBusy: false, isControlsEnabled: true);
+            //await PushAsync<CupResultViewModel>(cupResult);
             await App.Current.MainPage.Navigation.PushAsync(new CupResultPage(cupResult));
         }
 
@@ -146,6 +147,13 @@ namespace MoviesCupApp.ViewModels
 
         private async Task SyncListCommandExecuteCommand()
         {
+            if (MoviesList.Count > 1)
+            {
+                var result = await App.Current.MainPage.DisplayAlert(AppResources.Attention, AppResources.RefreshConfirmation, AppResources.OK, AppResources.Cancel);
+                if (!result)
+                    return;
+            }
+
             ToggleIsBusy(isBusy: true, isControlsEnabled: false);
             var movies = await _movieRepository.GetMoviesAsync<List<Movie>>();
             if (movies == null || movies?.Count < 1)

@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Attention" xml:space="preserve">
-    <value>Attention</value>
+    <value>Atenção</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="Choose8Movies" xml:space="preserve">
-    <value>Choose 8 movies to start the Cup</value>
+    <value>Escolha 8 filmes para iniciar a Copa</value>
   </data>
   <data name="CupResult" xml:space="preserve">
-    <value>Cup Result</value>
+    <value>Resultado da Copa</value>
   </data>
   <data name="InternetProblems" xml:space="preserve">
-    <value>Internet problems. Please, try again later.</value>
+    <value>Problemas com a Internet. Por favor, tente novamente mais tarde.</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Load</value>
+    <value>Carregar</value>
   </data>
   <data name="LoadMovies" xml:space="preserve">
-    <value>Load movies</value>
+    <value>Carregar filmes</value>
   </data>
   <data name="NoMovies" xml:space="preserve">
-    <value>No movies to list. Tap Load Movies in the top menu.</value>
+    <value>Não há filmes para listar. Toque em Carregar filmes no menu superior.</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -148,30 +148,30 @@
     <value>Oops...</value>
   </data>
   <data name="QualifyingPhase" xml:space="preserve">
-    <value>Qualifying Phase</value>
+    <value>Fase de Classificação</value>
   </data>
   <data name="RefreshConfirmation" xml:space="preserve">
-    <value>This action will reload the list and will unmark all the items</value>
+    <value>Esta ação recarregará a lista desmarcará todos os filmes</value>
   </data>
   <data name="RunnerUp" xml:space="preserve">
-    <value>Runner-up</value>
+    <value>Vice</value>
   </data>
   <data name="SelectedMovie" xml:space="preserve">
-    <value>Selected movie</value>
+    <value>Filme selecionado</value>
   </data>
   <data name="SelectedMovies" xml:space="preserve">
-    <value>Selected movies</value>
+    <value>Filmes selecionados</value>
   </data>
   <data name="Start" xml:space="preserve">
-    <value>Start</value>
+    <value>Iniciar</value>
   </data>
   <data name="StartAgain" xml:space="preserve">
-    <value>Star again with different movies</value>
+    <value>Começar novamente com filmes diferentes</value>
   </data>
   <data name="Winner" xml:space="preserve">
-    <value>Winner</value>
+    <value>Campeão</value>
   </data>
   <data name="WrongSizeMoviesList" xml:space="preserve">
-    <value>Choose 8 movies to start the Cup</value>
+    <value>Escolha 8 filmes para iniciar a Copa</value>
   </data>
 </root>

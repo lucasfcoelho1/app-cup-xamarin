@@ -1,4 +1,5 @@
 ﻿using MoviesCupApp.Models;
+using MoviesCupApp.Resources;
 using MoviesCupApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,16 @@ namespace MoviesCupApp
             InitializeComponent();
 
             ViewModel = BindingContext as MainViewModel;
+            FillLabels();
+        }
+
+        private void FillLabels()
+        {
+            lblStart.Text = AppResources.Start;
+            lblChoose8Movies.Text = AppResources.Choose8Movies;
+            lblLoadMovies.Text = AppResources.LoadMovies;
+            lblNomives.Text = AppResources.NoMovies;
+            Title = AppResources.QualifyingPhase;
         }
 
         #region methods

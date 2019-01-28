@@ -61,11 +61,74 @@ namespace MoviesCupApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attention.
+        /// </summary>
+        internal static string Attention {
+            get {
+                return ResourceManager.GetString("Attention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose 8 movies to start the Cup.
+        /// </summary>
+        internal static string Choose8Movies {
+            get {
+                return ResourceManager.GetString("Choose8Movies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cup Result.
+        /// </summary>
+        internal static string CupResult {
+            get {
+                return ResourceManager.GetString("CupResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internet problems. Please, try again later..
         /// </summary>
         internal static string InternetProblems {
             get {
                 return ResourceManager.GetString("InternetProblems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load.
+        /// </summary>
+        internal static string Load {
+            get {
+                return ResourceManager.GetString("Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load movies.
+        /// </summary>
+        internal static string LoadMovies {
+            get {
+                return ResourceManager.GetString("LoadMovies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No movies to list. Tap Load Movies in the top menu..
+        /// </summary>
+        internal static string NoMovies {
+            get {
+                return ResourceManager.GetString("NoMovies", resourceCulture);
             }
         }
         
@@ -88,7 +151,34 @@ namespace MoviesCupApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected Movie.
+        ///   Looks up a localized string similar to Qualifying Phase.
+        /// </summary>
+        internal static string QualifyingPhase {
+            get {
+                return ResourceManager.GetString("QualifyingPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This action will reload the list and will unmark all the items.
+        /// </summary>
+        internal static string RefreshConfirmation {
+            get {
+                return ResourceManager.GetString("RefreshConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runner-up.
+        /// </summary>
+        internal static string RunnerUp {
+            get {
+                return ResourceManager.GetString("RunnerUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected movie.
         /// </summary>
         internal static string SelectedMovie {
             get {
@@ -97,11 +187,38 @@ namespace MoviesCupApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected Movies.
+        ///   Looks up a localized string similar to Selected movies.
         /// </summary>
         internal static string SelectedMovies {
             get {
                 return ResourceManager.GetString("SelectedMovies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Star again with different movies.
+        /// </summary>
+        internal static string StartAgain {
+            get {
+                return ResourceManager.GetString("StartAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winner.
+        /// </summary>
+        internal static string Winner {
+            get {
+                return ResourceManager.GetString("Winner", resourceCulture);
             }
         }
         

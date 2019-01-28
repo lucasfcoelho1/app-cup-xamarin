@@ -89,6 +89,12 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>trophy_icon.png</Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -97,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
@@ -174,5 +183,32 @@
       <Project>{7A2734F5-E046-460F-9E4B-EDC2DC91075C}</Project>
       <Name>MoviesCupApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy_second.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checkbox_marked_circle.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\filmstrip.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy_first.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy_runnersup.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_left.xml" />
   </ItemGroup>
 </Project>

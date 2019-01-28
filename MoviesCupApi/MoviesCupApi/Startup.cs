@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MoviesCupApi.Repositories;
 using MoviesCupApi.Repositories.Interfaces;
 using MoviesCupApi.Services;
 using MoviesCupApi.Services.Interfaces;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MoviesCupApi
 {
@@ -36,19 +30,24 @@ namespace MoviesCupApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IMovieRepository, MovieRepository>();
             services.AddSingleton<ICupService, CupService>();
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new Info { Title = "Movies Api", Version = "V1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(x => 
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies API Version 1");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseHsts();
             }
-                //app.UseHsts();
-
-            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
