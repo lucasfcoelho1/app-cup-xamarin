@@ -1,4 +1,4 @@
-# Movies Cup
+# App Cup Xamarin
 
 Projeto de exemplo feito com ASP.NET Core e Xamarin.Forms.
 
